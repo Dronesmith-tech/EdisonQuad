@@ -239,7 +239,7 @@ void readSerialCommand() {
     case 'S': // Close BT Controller
       #ifdef RECEIVER_BT
         Bluetooth_Close();
-      #endif
+      #endif  
       break;
 
     case 'U': // Range Finder
