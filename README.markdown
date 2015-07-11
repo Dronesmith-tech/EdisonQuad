@@ -2,6 +2,12 @@ AeroQuad Flight Software Source Code v3.2
 ========================================
 [http://www.AeroQuad.com](http://www.AeroQuad.com)
 
+## EdisonQuad Alpha Release Notes (7/11/2015)
+* Added Bluetooth Control
+* Added Edison Motor Control
+* Added Support for LSM9DS0 9-axis (Accel/Gyro only)
+* Added Skyworks Build
+
 Version 3.2 Release Notes (1/27/2013)
 ----------------------------------------
 * Unified release with Configurator for official support of AQ32 Flight Control Board
