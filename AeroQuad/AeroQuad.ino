@@ -1184,7 +1184,7 @@
 #elif defined(RECEIVER_STM32)
   #include <Receiver_STM32.h>  
 #elif defined(RECEIVER_BT)
-  #error Bluetooth receiver hasn't been integrated yet. This new firmware build will not compile with edison receiver logic!
+  #error Bluetooth receiver hasn't been integrated yet. This new firmware build will not compile without edison receiver logic!
 #endif
 
 #if defined(UseAnalogRSSIReader) 

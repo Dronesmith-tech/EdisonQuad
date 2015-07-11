@@ -354,7 +354,8 @@ void readEEPROM() {
 }
 
 void writeEEPROM(){
-  cli(); // Needed so that APM sensor data does not overflow
+  // XXX do we need to do a crit section here?
+//  cli(); // Needed so that APM sensor data does not overflow
   writePID(XAXIS, ROLL_PID_GAIN_ADR);
   writePID(YAXIS, PITCH_PID_GAIN_ADR);
   writePID(ATTITUDE_XAXIS_PID_IDX, LEVELROLL_PID_GAIN_ADR);
@@ -460,7 +461,8 @@ void writeEEPROM(){
       writeFloat(servoTXChannels, SERVOTXCHANNELS_ADR);
     #endif
   #endif 
-  sei(); // Restart interrupts
+//  sei(); // Restart interrupts
+  // XXX do we need to do a crit section here?
 }
 
 void initSensorsZeroFromEEPROM() {
