@@ -230,6 +230,18 @@ void readSerialCommand() {
       #endif
       break;
 
+    case 'R': // Connect BT Controller
+      #ifdef RECEIVER_BT
+        Bluetooth_Open();
+      #endif
+      break;
+
+    case 'S': // Close BT Controller
+      #ifdef RECEIVER_BT
+        Bluetooth_Close();
+      #endif
+      break;
+
     case 'U': // Range Finder
       #if defined (AltitudeHoldRangeFinder)
         maxRangeFinderRange = readFloatSerial();

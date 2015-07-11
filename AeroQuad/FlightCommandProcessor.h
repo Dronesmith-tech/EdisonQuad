@@ -241,6 +241,9 @@ void processZeroThrottleFunctionFromReceiverCommand() {
  * and process command from the users
  */
 void readPilotCommands() {
+  #ifdef RECEIVER_BT
+    Bluetooth_Read();
+  #endif
 
   readReceiver(); 
   
