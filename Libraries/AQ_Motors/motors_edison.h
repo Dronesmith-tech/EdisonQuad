@@ -25,6 +25,7 @@
 #include "Arduino.h"
 #include "Motors.h"
 #include <servo.h>
+// #include <assert.h>
 
 #define MOTORPIN0    3
 #define MOTORPIN1    5
@@ -36,9 +37,6 @@ Servo myServo[4];
 void initializeMotors(NB_Motors numbers) {
   numberOfMotors = numbers;
 
-
-  // TODO init servos
-
   myServo[MOTOR1].attach(MOTORPIN0);
   myServo[MOTOR2].attach(MOTORPIN1);
   myServo[MOTOR3].attach(MOTORPIN2);
@@ -48,17 +46,12 @@ void initializeMotors(NB_Motors numbers) {
 }
 
 void writeMotors() {
-
   int i;
   for (i = 0; i < 4; ++i) {
-    if (motorCommand[i] > 255 || motorCommand[i] < 0) {
-      return;
-    }
-    //  motorCommand[i] = constrain(motorCommand[i], 0, 255);
+    // assert((motorCommand[i] > 255 || motorCommand[i] < 0);
+    motorCommand[i] = map(motorCommand[i], 1000, 2000, 0, 255);
   }
 
-  // TODO update motor value
-  // Serial.println(motorCommand[MOTOR1]);
 	myServo[MOTOR1].write(motorCommand[MOTOR1]);
 	myServo[MOTOR2].write(motorCommand[MOTOR2]);
 	myServo[MOTOR3].write(motorCommand[MOTOR3]);
@@ -67,21 +60,16 @@ void writeMotors() {
 }
 
 void commandAllMotors(int command) {
-  // TODO drive motors
   int i;
   for (i = 0; i < 4; ++i) {
-    // motorCommand[i] = constrain(motorCommand[i], 0, 255);
-    if (motorCommand[i] > 255 || motorCommand[i] < 0) {
-      return;
-    }
-    // motorCommand[i] = constrain(motorCommand[i], 0, 255);
+    motorCommand[i] = map(motorCommand[i], 1000, 2000, 0, 255);
+    // assert((motorCommand[i] > 255 || motorCommand[i] < 0);
   }
 
 	myServo[MOTOR1].write(command);
 	myServo[MOTOR2].write(command);
 	myServo[MOTOR3].write(command);
 	myServo[MOTOR4].write(command);
-
 
 }
 
