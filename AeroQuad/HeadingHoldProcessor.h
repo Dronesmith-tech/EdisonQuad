@@ -24,7 +24,7 @@
 
 
 float setHeading          = 0;
-unsigned long headingTime = micros();
+unsigned long headingTime = 0;
 
 
 /**

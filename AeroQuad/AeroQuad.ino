@@ -1501,6 +1501,7 @@ void setup() {
 
   Serial.println("WELCOME TO EDISONQUAD");
 
+  headingTime = micros();
   previousTime = micros();
   digitalWrite(LED_Green, HIGH);
   safetyCheck = 0;
