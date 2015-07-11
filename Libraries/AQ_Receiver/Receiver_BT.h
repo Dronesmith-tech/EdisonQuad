@@ -70,6 +70,8 @@ bool Bluetooth_Open() {
     return false;
   }
 
+  Serial.println("[BT Receiver] Ready.");
+
   return true;
 }
 
