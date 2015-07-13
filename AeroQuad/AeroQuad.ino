@@ -1384,21 +1384,21 @@ void setup() {
 
   initCommunication();
 
-  Serial.println("Telem: [OK]");
+//  Serial.println("Telem: [OK]");
   
   readEEPROM(); // defined in DataStorage.h
   boolean firstTimeBoot = false;
   if (readFloat(SOFTWARE_VERSION_ADR) != SOFTWARE_VERSION) { // If we detect the wrong soft version, we init all parameters
-    Serial.println("Datamon: No prior data found. Assuming this is first boot and initializing with default values.");
+//    Serial.println("Datamon: No prior data found. Assuming this is first boot and initializing with default values.");
     initializeEEPROM();
     writeEEPROM();
     firstTimeBoot = true;
   } else {
-    Serial.println("Datamon: [OK]");
+//    Serial.println("Datamon: [OK]");
   }
   
   initPlatform();
-  Serial.println("Board: [OK]");
+//  Serial.println("Board: [OK]");
   
   #if defined(quadXConfig) || defined(quadPlusConfig) || defined(quadY4Config) || defined(triConfig)
      initializeMotors(FOUR_Motors);
@@ -1408,19 +1408,19 @@ void setup() {
      initializeMotors(EIGHT_Motors);
   #endif
 
-  Serial.println("Mixer: [OK]");
+//  Serial.println("Mixer: [OK]");
 
   initializeReceiver(LASTCHANNEL);
   initReceiverFromEEPROM();
 
-  Serial.println("Receiver: [OK]");
+//  Serial.println("Receiver: [OK]");
   
   // Initialize sensors
   // If sensors have a common initialization routine
   // insert it into the gyro class because it executes first
   initializeGyro(); // defined in Gyro.h
   while (!calibrateGyro()); // this make sure the craft is still befor to continue init process
-  Serial.println("Gyro: [OK]");
+//  Serial.println("Gyro: [OK]");
   initializeAccel(); // defined in Accel.h
   if (firstTimeBoot) {
     computeAccelBias();
@@ -1428,7 +1428,7 @@ void setup() {
   }
   setupFourthOrder();
   initSensorsZeroFromEEPROM();
-  Serial.println("Accel: [OK]");
+//  Serial.println("Accel: [OK]");
   
   // Integral Limit for attitude mode
   // This overrides default set in readEEPROM()
@@ -1440,7 +1440,7 @@ void setup() {
   // Flight angle estimation
   initializeKinematics();
 
-  Serial.println("Estimator: [OK]");
+//  Serial.println("Estimator: [OK]");
 
   #ifdef HeadingMagHold
     vehicleState |= HEADINGHOLD_ENABLED;
@@ -1499,7 +1499,7 @@ void setup() {
      initSlowTelemetry();
   #endif
 
-  Serial.println("WELCOME TO EDISONQUAD");
+//  Serial.println("WELCOME TO EDISONQUAD");
 
   headingTime = micros();
   previousTime = micros();

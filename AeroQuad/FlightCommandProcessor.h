@@ -264,6 +264,8 @@ void readPilotCommands() {
     else {
         flightMode = RATE_FLIGHT_MODE;
     }
+
+    
     
     if (previousFlightMode != flightMode) {
       zeroIntegralError();

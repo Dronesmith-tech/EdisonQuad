@@ -55,7 +55,6 @@
 
 
 int BTfd = NULL;
-bool BTreadbuff = false;
 
 struct input_event BTev[64];
 
@@ -65,12 +64,12 @@ bool Bluetooth_Open() {
   }
 
   if ((BTfd = open(DEVICE_NAME, O_RDONLY)) < 0) {
-    Serial.println("[BT Receiver] Could not open controller.");
+    // Serial.println("[BT Receiver] Could not open controller.");
     BTfd = NULL;
     return false;
   }
 
-  Serial.println("[BT Receiver] Ready.");
+  // Serial.println("[BT Receiver] Ready.");
 
   return true;
 }
@@ -80,6 +79,7 @@ void Bluetooth_Close() {
     Serial.println("[BT Receiver] No Device open!");
   } else {
     close(BTfd);
+    BTfd = NULL;
     Serial.println("[BT Receiver] Controller closed.");
   }
 }
@@ -98,7 +98,7 @@ receiverCommand[AUX5] = 1000;
 */
 
 void Bluetooth_Read() {
-  if (BTfd && BTreadbuff) {
+  if (BTfd) {
     int rd = 0;
     int i = 0;
     rd = read(BTfd, BTev, sizeof(struct input_event) * 64);
